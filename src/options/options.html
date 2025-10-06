@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chrome Extension Template - Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <header class="options-header">
+      <div class="header-content">
+        <div class="logo">
+          <img src="../assets/icons/icon-48.png" alt="Extension Logo" class="logo-img" onerror="this.style.display='none'">
+          <div class="title-group">
+            <h1>Chrome Extension Template</h1>
+            <p class="subtitle">Configure your extension settings</p>
+          </div>
+        </div>
+        <div class="version-info">
+          <span class="version">v1.0.0</span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="options-nav">
+      <button class="nav-btn active" data-section="general">
+        <span class="nav-icon">⚙️</span>
+        General
+      </button>
+      <button class="nav-btn" data-section="appearance">
+        <span class="nav-icon">🎨</span>
+        Appearance
+      </button>
+      <button class="nav-btn" data-section="privacy">
+        <span class="nav-icon">🔒</span>
+        Privacy
+      </button>
+      <button class="nav-btn" data-section="advanced">
+        <span class="nav-icon">🔧</span>
+        Advanced
+      </button>
+      <button class="nav-btn" data-section="about">
+        <span class="nav-icon">ℹ️</span>
+        About
+      </button>
+    </nav>
+
+    <main class="options-main">
+      <!-- General Settings Section -->
+      <section id="general" class="options-section active">
+        <h2>General Settings</h2>
+        
+        <div class="setting-group">
+          <div class="setting-item">
+            <div class="setting-info">
+              <label class="setting-title">Enable Extension</label>
+              <p class="setting-description">Turn the extension on or off globally</p>
+            </div>
+            <div class="setting-control">
+              <label class="toggle-switch">
+                <input type="checkbox" id="enabledToggle" class="toggle-input">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label class="setting-title">Show Notifications</label>
+              <p class="setting-description">Display desktop notifications for important events</p>
+            </div>
+            <div class="setting-control">
+              <label class="toggle-switch">
+                <input type="checkbox" id="notificationsToggle" class="toggle-input">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label class="setting-title">Track Scroll Position</label>
+              <p class="setting-description">Remember scroll position on pages for easier navigation</p>
+            </div>
+            <div class="setting-control">
+              <label class="toggle-switch">
+                <input type="checkbox" id="trackScrollToggle" class="toggle-input">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label class="setting-title">Auto-highlight Keywords</label>
+              <p class="setting-description">Automatically highlight specified keywords on web pages</p>
+            </div>
+            <div class="setting-control">
+              <label class="toggle-switch">
+                <input type="checkbox" id="autoHighlightToggle" class="toggle-input">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Keywords to Highlight</h3>
+          <div class="keyword-manager">
+            <div class="keyword-input-group">
+              <input type="text" id="keywordInput" placeholder="Enter keyword..." class="keyword-input">
+              <button id="addKeywordBtn" class="btn btn-primary">Add</button>
+            </div>
+            <div id="keywordList" class="keyword-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Appearance Settings Section -->
+      <section id="appearance" class="options-section">
+        <h2>Appearance Settings</h2>
+        
+        <div class="setting-group">
+          <div class="setting-item">
+            <div class="setting-info">
+              <label class="setting-title">Theme</label>
+              <p class="setting-description">Choose your preferred color theme</p>
+            </div>
+            <div class="setting-control">
+              <select id="themeSelect" class="select-input">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="auto">Auto (System)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label class="setting-title">Highlight Color</label>
+              <p class="setting-description">Color used for highlighting text</p>
+            </div>
+            <div class="setting-control">
+              <input type="color" id="highlightColorPicker" value="#ffeb3b" class="color-input">
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label class="setting-title">Font Size</label>
+              <p class="setting-description">Adjust the font size for extension UI</p>
+            </div>
+            <div class="setting-control">
+              <select id="fontSizeSelect" class="select-input">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy Settings Section -->
+      <section id="privacy" class="options-section">
+        <h2>Privacy Settings</h2>
+        
+        <div class="setting-group">
+          <div class="setting-item">
+            <div class="setting-info">
+              <label class="setting-title">Collect Usage Statistics</label>
+              <p class="setting-description">Help improve the extension by sharing anonymous usage data</p>
+            </div>
+            <div class="setting-control">
+              <label class="toggle-switch">
+                <input type="checkbox" id="statsToggle" class="toggle-input">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label class="setting-title">Store Data Locally</label>
+              <p class="setting-description">Keep all data on your device instead of syncing</p>
+            </div>
+            <div class="setting-control">
+              <label class="toggle-switch">
+                <input type="checkbox" id="localStorageToggle" class="toggle-input">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Data Management</h3>
+          <div class="data-actions">
+            <button id="exportDataBtn" class="btn btn-secondary">Export Data</button>
+            <button id="importDataBtn" class="btn btn-secondary">Import Data</button>
+            <button id="clearDataBtn" class="btn btn-danger">Clear All Data</button>
+          </div>
+          <input type="file" id="importFileInput" accept=".json" style="display: none;">
+        </div>
+      </section>
+
+      <!-- Advanced Settings Section -->
+      <section id="advanced" class="options-section">
+        <h2>Advanced Settings</h2>
+        
+        <div class="setting-group">
+          <div class="setting-item">
+            <div class="setting-info">
+              <label class="setting-title">Debug Mode</label>
+              <p class="setting-description">Enable detailed logging for troubleshooting</p>
+            </div>
+            <div class="setting-control">
+              <label class="toggle-switch">
+                <input type="checkbox" id="debugToggle" class="toggle-input">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label class="setting-title">Custom CSS</label>
+              <p class="setting-description">Inject custom CSS into web pages</p>
+            </div>
+            <div class="setting-control">
+              <label class="toggle-switch">
+                <input type="checkbox" id="customCssToggle" class="toggle-input">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Custom CSS Editor</h3>
+          <textarea id="customCssEditor" class="css-editor" placeholder="Enter your custom CSS here..."></textarea>
+          <div class="editor-actions">
+            <button id="saveCssBtn" class="btn btn-primary">Save CSS</button>
+            <button id="resetCssBtn" class="btn btn-secondary">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="options-section">
+        <h2>About Chrome Extension Template</h2>
+        
+        <div class="about-content">
+          <div class="about-info">
+            <h3>Version Information</h3>
+            <p><strong>Version:</strong> 1.0.0</p>
+            <p><strong>Build:</strong> <span id="buildInfo">Loading...</span></p>
+            <p><strong>Last Updated:</strong> <span id="lastUpdated">Loading...</span></p>
+          </div>
+
+          <div class="about-links">
+            <h3>Resources</h3>
+            <div class="link-grid">
+              <!-- Links will be dynamically created by JavaScript -->
+            </div>
+          </div>
+
+          <div class="about-description">
+            <h3>Description</h3>
+            <p>
+              Chrome Extension Template is a comprehensive starter template for building modern Chrome browser extensions.
+              It includes TypeScript support, modern build tools, testing setup, and follows Chrome extension best practices.
+            </p>
+            <p>
+              This template provides a solid foundation for creating feature-rich extensions with proper architecture,
+              security considerations, and user experience design.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="options-footer">
+      <div class="footer-content">
+        <div class="footer-left">
+          <span class="copyright">© 2025 Jin-Ho Lee. Licensed under MIT.</span>
+        </div>
+        <div class="footer-right">
+          <button id="resetAllBtn" class="btn btn-outline">Reset All Settings</button>
+          <button id="saveAllBtn" class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div id="confirmModal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="confirmTitle">Confirm Action</h3>
+      <p id="confirmMessage">Are you sure you want to proceed?</p>
+      <div class="modal-actions">
+        <button id="confirmCancel" class="btn btn-secondary">Cancel</button>
+        <button id="confirmOk" class="btn btn-danger">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+</body>
+</html>
