@@ -53,5 +53,8 @@
   },
   "browserslist": [
     "last 2 Chrome versions"
-  ]
+  ],
+  "dependencies": {
+    "chrome-types": "^0.1.382"
+  }
 }
